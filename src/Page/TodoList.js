@@ -22,6 +22,7 @@ const TodoList = () => {
       })
       .catch((error) => {
         setLoading(false);
+        setTodoData("");
         toastRef.current.handleToast(error.message);
       });
   };
