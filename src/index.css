@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+::selection {
+  color: #fff;
+  background: #096855;
+}
+
 ul.todo_content li {
   font-size: 17px;
   font-family: sans-serif;
@@ -45,6 +50,7 @@ ul.todo_content li {
   width: 50%;
   border-radius: 10px;
 }
+
 .todo_main_content_div {
   margin: 50px 0;
 }
