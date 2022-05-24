@@ -11,6 +11,8 @@ const TodoList = () => {
   const [userdata, setUserData] = useState([]);
   const toastRef = useRef();
 
+  console.log(tododata.length, "tododata length");
+
   const handleClick = async () => {
     setLoading(true);
     await fetch("https://jsonplaceholder.typicode.com/todos")
@@ -59,6 +61,7 @@ const TodoList = () => {
     if (index > -1) {
       tododata.splice(index, 1);
       setTodoData([...tododata]);
+      toastRef.current.handleToast("Deleted Successfully");
     }
   };
 
@@ -77,8 +80,12 @@ const TodoList = () => {
           <div>
             <Button onClick={() => handleClick()} disabled={loading} />
           </div>
+
           {tododata.length > 0 ? (
             <>
+              <div className="total_count">
+                <p> {tododata.length} out of 200 </p>
+              </div>
               <div className="user_content_list">
                 {message && <ErrorMessage msg={message} />}
                 {tododata &&

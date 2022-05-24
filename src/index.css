@@ -49,6 +49,19 @@ ul.todo_content li {
   margin: 50px 0;
 }
 
+.total_count {
+  background-color: #e9fffb;
+  margin-bottom: 8px;
+  border-radius: 20px;
+  width: 50%;
+}
+
+.total_count p {
+  margin: 0;
+  padding: 10px 15px;
+  user-select: none;
+}
+
 /* SCROLLBAR */
 
 .user_content_list::-webkit-scrollbar {
