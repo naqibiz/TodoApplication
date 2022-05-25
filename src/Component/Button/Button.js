@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-const Button = ({ onClick, disabled }) => {
+const Button = ({ onClick, disabled, value }) => {
   const Button = styled.button`
     background-color: transparent;
     margin: auto;
@@ -17,7 +17,7 @@ const Button = ({ onClick, disabled }) => {
   return (
     <div>
       <Button onClick={onClick} disabled={disabled}>
-        {disabled ? "Loading..." : "Fetch Todo"}
+        {disabled ? "Loading..." : value}
       </Button>
     </div>
   );

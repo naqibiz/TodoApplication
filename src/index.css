@@ -68,6 +68,38 @@ ul.todo_content li {
   user-select: none;
 }
 
+/* Hook style */
+
+button.hook_btn {
+  background-color: transparent;
+  margin: auto;
+  display: block;
+  color: #1cc1a0;
+  font-size: 20px;
+  padding: 5px 8px !important;
+  border-radius: 5px;
+  border: 2px solid #1cc1a0;
+  cursor: pointer;
+  margin: 25px 0 !important;
+}
+
+.hook_div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.button_onclick {
+  display: flex;
+}
+
+.button_onclick div {
+  margin: 10px;
+}
+
+/* Hook style */
+
 /* SCROLLBAR */
 
 .user_content_list::-webkit-scrollbar {

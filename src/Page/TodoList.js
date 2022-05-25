@@ -3,15 +3,21 @@ import ErrorMessage from "../Component/ErrorMessage/ErrorMessage";
 import Button from "../Component/Button/Button";
 import Todo from "../Component/Todo";
 import ToastifyMessage from "../Component/ToastifyMessage";
+import App from "../Page/Hooks/App";
 
 const TodoList = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [tododata, setTodoData] = useState([]);
   const [userdata, setUserData] = useState([]);
+  const [userefhook, setUseRefHook] = useState(false);
   const toastRef = useRef();
 
   console.log(tododata.length, "tododata length");
+
+  const handleUseRef = () => {
+    setUseRefHook(true);
+  };
 
   const handleClick = async () => {
     setLoading(true);
@@ -72,41 +78,51 @@ const TodoList = () => {
 
   return (
     <>
-      <div className="todo_main_content_div">
-        <div className="todo_all_content_div">
-          <div className="todo_header">
-            <h3 className="logo">Todo Application</h3>
-          </div>
-          <div>
-            <Button onClick={() => handleClick()} disabled={loading} />
-          </div>
+      {userefhook == true ? (
+        <App />
+      ) : (
+        <div className="todo_main_content_div">
+          <div className="todo_all_content_div">
+            <div className="todo_header">
+              <h3 className="logo">Todo Application</h3>
+            </div>
+            <div className="button_onclick">
+              <Button
+                onClick={() => handleClick()}
+                disabled={loading}
+                value="Fetch Todo"
+              />
 
-          {tododata.length > 0 ? (
-            <>
-              <div className="total_count">
-                <p> {tododata.length} out of 200 </p>
-              </div>
-              <div className="user_content_list">
-                {message && <ErrorMessage msg={message} />}
-                {tododata &&
-                  tododata.map((val, i) => (
-                    <div className="todo_content">
-                      <Todo
-                        data={val}
-                        key={i}
-                        onClick={handleUserData}
-                        handleRemove={handleRemove}
-                      />
-                    </div>
-                  ))}
-              </div>
-            </>
-          ) : (
-            <></>
-          )}
-          <ToastifyMessage ref={toastRef} />
+              <Button onClick={() => handleUseRef()} value="Click Here" />
+            </div>
+
+            {tododata.length > 0 ? (
+              <>
+                <div className="total_count">
+                  <p> {tododata.length} out of 200 </p>
+                </div>
+                <div className="user_content_list">
+                  {message && <ErrorMessage msg={message} />}
+                  {tododata &&
+                    tododata.map((val, i) => (
+                      <div className="todo_content">
+                        <Todo
+                          data={val}
+                          key={i}
+                          onClick={handleUserData}
+                          handleRemove={handleRemove}
+                        />
+                      </div>
+                    ))}
+                </div>
+              </>
+            ) : (
+              <></>
+            )}
+            <ToastifyMessage ref={toastRef} />
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
